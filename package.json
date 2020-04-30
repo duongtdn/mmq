@@ -17,7 +17,7 @@
   },
   "homepage": "https://github.com/duongtdn/mathmadquick#readme",
   "dependencies": {
-    "@realmjs/react-navi": "^2.5.1",
+    "@realmjs/react-navi": "^2.6.0",
     "react": "^16.13.1",
     "react-dom": "^16.13.1"
   },

@@ -2,8 +2,25 @@
 
 import React from 'react'
 
+import { Navigator } from '@realmjs/react-navi'
+
+import PageHome from './Page/PageHome'
+import PagePlay from './Page/PagePlay'
+import PageResult from './Page/PageResult'
+
+const routes = {
+  home: { Page: PageHome },
+  play: { Page: PagePlay },
+  result: { Page: PageResult },
+};
+
 export default function (props) {
   return (
-    <div> Math Mad Quick </div>
+    <Navigator
+      routes = {routes}
+      initialRoute = 'home'
+      noUrl = {true}
+      {...props}
+    />
   );
 }
