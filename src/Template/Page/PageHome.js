@@ -6,7 +6,7 @@ export default function (props) {
   const [name, setName] = useState('');
   const [err, setErr] = useState('');
   return (
-    <div className="container">
+    <div>
       <header style={{textAlign: 'center'}}>
         <h2 className="mali bold text-blue xxlarge" >Math Mad <br/> <span className="text-dark-grey">Quick</span></h2>
         <p className="mali small text-grey">
