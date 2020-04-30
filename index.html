@@ -13,7 +13,9 @@
     <link href="https://fonts.googleapis.com/css?family=Pacifico|Dancing+Script|Parisienne|Mali&display=swap" rel="stylesheet">
 
     <style>
-
+      html {
+        font-family: 'Mali';
+      }
       .note {
         font-family: 'Mali';
       }
@@ -23,13 +25,110 @@
       .bold {
         font-weight: bold;
       }
-
       .cursor-pointer {
         cursor: pointer;
       }
-
       .no-outline:focus {
         outline: 0 none;
+      }
+      .mali {
+        font-family: 'Mali';
+      }
+      /* font extract from w3css */
+      .container {
+        padding: 0.01em 16px;
+      }
+      .tiny {
+        font-size:10px!important
+      }
+      .small {
+        font-size:12px!important;
+      }
+      .large {
+        font-size:18px!important;
+      }
+      .xlarge {
+        font-size:24px!important;
+      }
+      .xxlarge {
+        font-size:36px!important;
+      }
+      .xxxlarge {
+        font-size:48px!important;
+      }
+      .text-blue {
+        color:#2196F3!important;
+      }
+      .text-red {
+        color:#f44336!important;
+      }
+      .text-grey {
+        color:#757575!important;
+      }
+      .text-dark-grey {
+        color:#3a3a3a!important;
+      }
+      .round-small {
+        border-radius:2px;
+      }
+      .round {
+        border-radius:4px;
+      }
+      .round-large {
+        border-radius:8px;
+      }
+      .round-xlarge {
+        border-radius:16px;
+      }
+      .round-xxlarge {
+        border-radius:32px
+      }
+      .pale-blue {
+        color:#000!important;
+        background-color:#ddffff!important
+      }
+
+
+      /* special button style */
+      .btn-play {
+        position: relative;
+        margin: .5em;
+        border: solid .125em transparent;
+        padding: 0;
+        width: 8.5em;
+        height: 2em;
+        border-radius: 1em;
+        color: #fff;
+        text-shadow: 1px 1px var(--c-sh-txt, rgba(0, 0, 0, 0.5));
+        font: 900 1.5em calligraffitti, cursive;
+        filter: contrast(0.65);
+        transition: .2s ease-out;
+        cursor: pointer;
+
+        background: radial-gradient(at 50% 100%, #005e9b, rgba(0, 115, 191, 0) 70%) left 50% bottom 0.125em/ 41% 0.125em no-repeat content-box, radial-gradient(at 50% 0, #2b9bd8, rgba(43, 155, 216, 0) 70%) 50% 100%/41% 0.125em no-repeat content-box, radial-gradient(at 90% 0%, rgba(255, 255, 255, 0.2) 50%, rgba(255, 255, 255, 0) 51%) 50%/100% 215% border-box, linear-gradient(#2899e9, #0161b0) content-box, linear-gradient(#1a77be, #5bbaf5) border-box;
+
+      }
+      .btn-play:hover, .btn-play:focus {
+        outline: none;
+        filter: none;
+      }
+      .btn-play:active {
+        transform: translatey(0.125em);
+      }
+
+      .btn-play:before,.btn-play:after {
+        order: 1;
+        content: "";
+      }
+
+      /* special style for input name */
+      .input-name {
+        display: block;
+        width: calc(100% - 16px);
+        border: solid 1px #9e9e9e;
+        padding: 8px;
+        color:#000!important;
+        background-color:#f1f1f1!important
       }
 
     </style>
