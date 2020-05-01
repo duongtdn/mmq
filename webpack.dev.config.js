@@ -7,8 +7,8 @@ module.exports = {
       dev: ["./src/app.js"]
     },
     output: {
-      filename: "test.bundle.js",
-      path: path.resolve(__dirname, "tests"),
+      filename: "app.js",
+      path: path.resolve(__dirname),
     },
     module: {
       rules: [
@@ -22,7 +22,7 @@ module.exports = {
     mode: 'development',
     devtool: 'inline-source-map',
     devServer: {
-      publicPath: "/assets/",
+      publicPath: "/",
       historyApiFallback: true
     }
 }
