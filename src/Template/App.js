@@ -18,7 +18,7 @@ export default function (props) {
   return (
     <Navigator
       routes = {routes}
-      initialRoute = 'home'
+      initialRoute = 'play'
       noUrl = {true}
       {...props}
     />

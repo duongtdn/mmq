@@ -8,8 +8,8 @@ export default function (props) {
   return (
     <div>
       <header style={{textAlign: 'center'}}>
-        <h2 className="mali bold text-blue xxlarge" >Math Mad <br/> <span className="text-dark-grey">Quick</span></h2>
-        <p className="mali small text-grey">
+        <h2 className="mali bold w3-text-blue w3-xxlarge" >Math Mad <br/> <span className="text-dark-grey">Quick</span></h2>
+        <p className="mali w3-small w3-text-grey">
           Simple Math &hearts; Strengthen Brains &hearts; Do it quick
         </p>
       </header>
@@ -17,12 +17,12 @@ export default function (props) {
       <div style={{width: '230px', margin: '32px auto', textAlign: 'center'}}>
         <label className="xlarge">Your name</label>
         <input
-          className="input-name mali round-xlarge xlarge no-outline"
+          className="text-input mali w3-round-xlarge w3-xlarge no-outline"
           type='text'
           value={name}
           onChange = {handleInput}
         />
-        <div className='text-red' style={{height: '20px'}}>
+        <div className='w3-text-red' style={{height: '20px'}}>
           {err}
         </div>
         <button className="btn-play no-outline" onClick={play}>
