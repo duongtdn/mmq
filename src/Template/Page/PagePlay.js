@@ -50,10 +50,12 @@ function Expression(props) {
 function AnswerBox(props) {
   const [answer, setAnswer] = useState('');
   const correct = props.correct;
+  const answerBoxStyle = correct === undefined? '':
+    correct? 'w3-pale-green w3-border-green w3-border-green' : 'w3-pale-red w3-border-red w3-border-red';
   return (
     <div style={{width: '270px', margin: '8px auto', textAlign: 'center'}}>
       <label className='w3-text-grey'>Answer</label>
-      <label className='text-input mali w3-round-xlarge w3-xlarge no-outline text-center' style={{position: 'relative', padding: 0}}>
+      <label className={`text-input mali w3-round-xlarge w3-xlarge no-outline text-center ${answerBoxStyle}`} style={{position: 'relative', padding: 0}}>
         <label className = 'w3-xxlarge' style={{margin: '8px'}}> {answer} </label>
         <span className = 'w3-xxlarge w3-text-red' style={{position: 'absolute', padding: '0 6px 0 0', right: 0, bottom: '3px'}} onClick={e => setAnswer('')}> &times; </span>
       </label>
@@ -66,22 +68,22 @@ function AnswerBox(props) {
       <div className = '' style={{margin: '16px 0'}}>
         <div>
           <div className = 'w3-cell-row pad-row'>
-            <div className = 'w3-cell' style={{padding: '0 16px'}}>
+            <div className = 'w3-cell pad-num-container' style={{padding: '0 16px'}}>
               <div className = 'pad-num w3-ripple' onClick = {e => updateAnswer(0)}>
                 0
               </div>
             </div>
-            <div className = 'w3-cell w3-block pad-btn-wrapper' style={{textAlign: 'left', padding: '0 16px'}}>
-              <button className = 'w3-button pad-btn w3-block w3-blue w3-round-large' onClick={sendAnswer}>
+            <div className = 'w3-cell w3-block pad-btn-wrapper' style={{textAlign: 'left'}}>
+              <span className = 'pad-btn w3-block w3-blue w3-round-large' onClick={sendAnswer}>
                 OK
-              </button>
+              </span>
             </div>
           </div>
           <div className = 'w3-cell-row pad-row'>
             {
               [1,2,3].map(num => {
                 return (
-                  <div key = {num} className = 'w3-cell'>
+                  <div key = {num} className = 'w3-cell pad-num-container'>
                     <div className = 'pad-num w3-ripple' onClick = {e => updateAnswer(num)}>
                       {num}
                     </div>
@@ -94,7 +96,7 @@ function AnswerBox(props) {
             {
               [4,5,6].map(num => {
                 return (
-                  <div key = {num} className = 'w3-cell'>
+                  <div key = {num} className = 'w3-cell pad-num-container'>
                     <div className = 'pad-num w3-ripple' onClick = {e => updateAnswer(num)}>
                       {num}
                     </div>
@@ -107,7 +109,7 @@ function AnswerBox(props) {
             {
               [7,8,9].map(num => {
                 return (
-                  <div key = {num} className = 'w3-cell'>
+                  <div key = {num} className = 'w3-cell pad-num-container'>
                     <div className = 'pad-num w3-ripple' onClick = {e => updateAnswer(num)}>
                       {num}
                     </div>
@@ -144,6 +146,7 @@ export default function (props) {
   const [correct, setCorrect] = useState(undefined);
   const [index, setIndex] = useState(0);
   const [finish, setFinish] = useState(false);
+  const [animate, setAnimate] = useState(false);
   const quest = props.page.data.quest;
   return (
     <div>
@@ -156,9 +159,27 @@ export default function (props) {
         onFinish = {showResult}
       />
 
-      <Expression
-        expr = {quest[index]}
-      />
+
+      {
+        [index].map(index => {
+          return (
+            <div key={index} className="flip-container">
+              <div className={`flip-inner ${animate? 'animate-flip' : ''}`}>
+                <div className="flip-front">
+                  <Expression
+                    expr = {quest[index]}
+                  />
+                </div>
+                <div className="flip-back">
+                  <Expression
+                    expr = {index < quest.length-1? quest[index+1] : ''}
+                  />
+                </div>
+              </div>
+            </div>
+          )
+        })
+      }
 
       <AnswerBox
         correct = {correct}
@@ -172,8 +193,10 @@ export default function (props) {
       const correctAnswer = eval(quest[index]);
       if (parseInt(answer) === parseInt(correctAnswer)) {
         setCorrect(true);
+        (index < quest.length - 1) && setAnimate(true);
         setTimeout(() => {
           setCorrect(undefined);
+          setAnimate(false);
           resolve(true);
           if (index < quest.length - 1) {
             setIndex(index => index + 1);

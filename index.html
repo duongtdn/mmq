@@ -85,16 +85,12 @@
         height: 56px;
         border: solid 1px #9e9e9e;
         padding: 8px;
-        color:#000!important;
-        background-color:#f1f1f1!important
+        color:#000;
+        background-color:#f1f1f1;
       }
 
       /**/
-      /* .bar {
-        width:100%;
-        padding: 8px 16px;
-        overflow:hidden
-      } */
+
       .tiny-circle {
         width: 20px;
         height: 20px;
@@ -102,29 +98,76 @@
         display: inline-block;
       }
       .pad-row {
-        margin: 16px 0;
+        margin: 8px 0;
+      }
+      .pad-num-container {
+        width: 72px;
       }
       .pad-num {
-        width: 60px;
-        height: 60px;
+        width: 64px;
+        height: 64px;
         border-radius: 50%;
-        border: solid 1px #607d8b;
+        border: solid 1px #4CAF50;
         display: inline-block;
         text-align: center;
         font-size: 32px;
         font-weight: normal;
-        padding-top: 3px;
-        background-color:#ddffff!important;
+        padding-top: 4px;
+        background-color:#8bc34a!important;
         font-family: 'Mali';
       }
       .pad-btn-wrapper {
         text-align: left;
-        padding: 0px 16px;
+        padding: 0px 16px 0 0;
         vertical-align: middle;
+        width: 144px;
       }
       .pad-btn {
         height: 48px;
+        border:none;
+        display:inline-block;
+        padding:8px 16px;
+        vertical-align:middle;
+        overflow:hidden;
+        text-decoration:none;
+        color:inherit;
+        background-color:inherit;
+        text-align:center;
+        cursor:pointer;
+        white-space:nowrap;
+        font-family: 'Mali';
+        font-size: 22px;
+        font-weight: bold;
       }
+
+      /* Flip */
+      .flip-container {
+        width: 100%;
+        height: 72px;
+      }
+      .flip-inner {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        transition: transform .2s;
+        transform-style: preserve-3d;
+      }
+      .flip-front, .flip-back {
+        position: absolute;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        -webkit-backface-visibility: hidden; /* Safari */
+        backface-visibility: hidden;
+      }
+      .flip-back {
+        transform: rotateX(180deg);
+      }
+      .animate-flip {
+        transform-style: preserve-3d;
+        transform: rotateX(180deg);
+      }
+
     </style>
 
   </head>
