@@ -11,20 +11,27 @@ function Ads() {
 }
 
 function TitleBar(props) {
-  const [timeLeft, setTimeLeft] = useState(0);
+  const [elapsedTime, setElapsedTime] = useState(0);
+  console.log(props.finish)
   useEffect(() => {
     const t = setInterval(() => {
-      setTimeLeft(timeLeft => timeLeft + 1);
+      setElapsedTime(elapsedTime => elapsedTime + 1);
     }, 1000);
     return () => clearInterval(t);
   },[]);
+  useEffect(() => {
+    if (props.finish) {
+      props.onFinish(elapsedTime);
+      setElapsedTime(0);
+    }
+  },[props]);
   return (
     <div className="w3-bar w3-small">
       <div className="w3-bar-item w3-text-blue">
         <span > {props.num}/{props.total} </span>
       </div>
       <div className="w3-bar-item w3-right w3-text-yellow">
-        <span > {formatTime(timeLeft, {short: true})} </span>
+        <span > {formatTime(elapsedTime, {short: true})} </span>
       </div>
     </div>
   )
@@ -137,6 +144,7 @@ function AnswerBox(props) {
 export default function (props) {
   const [correct, setCorrect] = useState(undefined);
   const [index, setIndex] = useState(0);
+  const [finish, setFinish] = useState(false);
   const quest = [
     '15 + 7 * 10',
     '6 * 3',
@@ -149,7 +157,8 @@ export default function (props) {
       <TitleBar
         num = {index}
         total = {quest.length}
-
+        finish = {finish}
+        onFinish = {getElapsedTime}
       />
 
       <Expression
@@ -175,6 +184,7 @@ export default function (props) {
             setIndex(index => index + 1);
           } else {
             console.log('End quest. Collect time and Navigate to end result')
+            setFinish(true);
           }
         }, 500);
       } else {
@@ -182,5 +192,8 @@ export default function (props) {
         resolve(false);
       }
     });
+  }
+  function getElapsedTime(elapsedTime) {
+    console.log(`Time: ${elapsedTime}`);
   }
 }
