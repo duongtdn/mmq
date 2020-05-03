@@ -3,8 +3,8 @@
 import React, { useState } from 'react'
 
 export default function (props) {
-  const [name, setName] = useState('');
-  const [err, setErr] = useState('');
+  // const [name, setName] = useState('');
+  // const [err, setErr] = useState('');
   return (
     <div>
       <header style={{textAlign: 'center'}}>
@@ -15,7 +15,7 @@ export default function (props) {
       </header>
 
       <div style={{width: '230px', margin: '32px auto', textAlign: 'center'}}>
-        <label className="xlarge">Your name</label>
+        {/* <label className="xlarge">Your name</label>
         <input
           className="text-input mali w3-round-xlarge w3-xlarge no-outline"
           type='text'
@@ -24,22 +24,28 @@ export default function (props) {
         />
         <div className='w3-text-red' style={{height: '20px'}}>
           {err}
-        </div>
+        </div> */}
         <button className="btn-play no-outline" onClick={play}>
           <span>Play</span>
         </button>
       </div>
     </div>
   );
-  function handleInput(e) {
-    setErr('');
-    setName(e.target.value);
-  }
+  // function handleInput(e) {
+  //   setErr('');
+  //   setName(e.target.value);
+  // }
   function play() {
-    if (name.length === 0) {
-      setErr('Please enter your name')
-    } else {
-      props.route.navigate('play', { data: {name} })
-    }
+    // if (name.length === 0) {
+    //   setErr('Please enter your name')
+    // } else {
+    //   props.route.navigate('play', { data: {name} })
+    // }
+    const quest = [
+      '15 + 7 * 10',
+      '6 * 3',
+      '2 * 2 + 2'
+    ];
+    props.route.replace('play', { data: {quest} });
   }
 }

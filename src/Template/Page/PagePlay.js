@@ -12,7 +12,6 @@ function Ads() {
 
 function TitleBar(props) {
   const [elapsedTime, setElapsedTime] = useState(0);
-  console.log(props.finish)
   useEffect(() => {
     const t = setInterval(() => {
       setElapsedTime(elapsedTime => elapsedTime + 1);
@@ -145,11 +144,7 @@ export default function (props) {
   const [correct, setCorrect] = useState(undefined);
   const [index, setIndex] = useState(0);
   const [finish, setFinish] = useState(false);
-  const quest = [
-    '15 + 7 * 10',
-    '6 * 3',
-    '2 * 2 + 2'
-  ];
+  const quest = props.page.data.quest;
   return (
     <div>
       <Ads />
@@ -158,7 +153,7 @@ export default function (props) {
         num = {index}
         total = {quest.length}
         finish = {finish}
-        onFinish = {getElapsedTime}
+        onFinish = {showResult}
       />
 
       <Expression
@@ -186,14 +181,15 @@ export default function (props) {
             console.log('End quest. Collect time and Navigate to end result')
             setFinish(true);
           }
-        }, 500);
+        }, 200);
       } else {
         setCorrect(false);
         resolve(false);
       }
     });
   }
-  function getElapsedTime(elapsedTime) {
+  function showResult(elapsedTime) {
     console.log(`Time: ${elapsedTime}`);
+    props.route.replace('result', { data: {elapsedTime} });
   }
 }
