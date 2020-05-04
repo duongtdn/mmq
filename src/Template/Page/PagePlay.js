@@ -62,19 +62,19 @@ function AnswerBox(props) {
       <div className={correct?'w3-text-green':'w3-text-red'} style={{height: '20px'}}>
         {
           correct === undefined? null:
-            correct? 'correct' : 'wrong'
+            correct? __randStr(true) : __randStr(false)
         }
       </div>
       <div className = '' style={{margin: '16px 0'}}>
         <div>
           <div className = 'w3-cell-row pad-row'>
-            <div className = 'w3-cell pad-num-container' style={{padding: '0 16px'}}>
-              <div className = 'pad-num w3-ripple' onClick = {e => updateAnswer(0)}>
+            <div className = 'w3-cell pad-num-container' style={{padding: '0 16px 0 0'}}>
+              <div className = 'pad-num w3-ripple w3-card' onClick = {e => updateAnswer(0)}>
                 0
               </div>
             </div>
             <div className = 'w3-cell w3-block pad-btn-wrapper' style={{textAlign: 'left'}}>
-              <span className = 'pad-btn w3-block w3-blue w3-round-large' onClick={sendAnswer}>
+              <span className = 'pad-btn w3-block w3-light-blue w3-card w3-round-large' onClick={sendAnswer}>
                 OK
               </span>
             </div>
@@ -84,7 +84,7 @@ function AnswerBox(props) {
               [1,2,3].map(num => {
                 return (
                   <div key = {num} className = 'w3-cell pad-num-container'>
-                    <div className = 'pad-num w3-ripple' onClick = {e => updateAnswer(num)}>
+                    <div className = 'pad-num w3-ripple w3-card' onClick = {e => updateAnswer(num)}>
                       {num}
                     </div>
                   </div>
@@ -97,7 +97,7 @@ function AnswerBox(props) {
               [4,5,6].map(num => {
                 return (
                   <div key = {num} className = 'w3-cell pad-num-container'>
-                    <div className = 'pad-num w3-ripple' onClick = {e => updateAnswer(num)}>
+                    <div className = 'pad-num w3-ripple w3-card' onClick = {e => updateAnswer(num)}>
                       {num}
                     </div>
                   </div>
@@ -110,7 +110,7 @@ function AnswerBox(props) {
               [7,8,9].map(num => {
                 return (
                   <div key = {num} className = 'w3-cell pad-num-container'>
-                    <div className = 'pad-num w3-ripple' onClick = {e => updateAnswer(num)}>
+                    <div className = 'pad-num w3-ripple w3-card' onClick = {e => updateAnswer(num)}>
                       {num}
                     </div>
                   </div>
@@ -125,7 +125,7 @@ function AnswerBox(props) {
   function updateAnswer(num) {
     if (answer.length === 0 && num === 0) { return; }
     if (props.correct === false) {
-      setAnswer(num);
+      num === 0? setAnswer('') : setAnswer(num);
       props.clear();
       return;
     }
@@ -139,6 +139,17 @@ function AnswerBox(props) {
       correct && setAnswer('');
     })
     .catch(err => console.log(err));
+  }
+  function __randStr(correct) {
+    const right = ['weldone!', 'good!', 'super!', 'you made it!', 'awesome!', 'excellent!', 'wow', 'yeah!', 'okey, go'];
+    const wrong = ['oh no!', 'try again', 'not that number', 'not easy huh?', 'did you make a typo?', 'you can make it', 'come on', 'are you kidding?'];
+    if (correct) {
+      const n = Math.floor(Math.random()*right.length);
+      return right[n];
+    } else {
+      const n = Math.floor(Math.random()*wrong.length);
+      return wrong[n];
+    }
   }
 }
 
