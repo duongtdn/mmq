@@ -10,7 +10,7 @@ export default function (props) {
       <header style={{textAlign: 'center'}}>
         <h2 className="mali bold w3-text-blue w3-xxlarge" >Math Mad <br/> <span className="text-dark-grey">Quick</span></h2>
         <p className="mali w3-small w3-text-grey">
-          Simple Math &hearts; Strengthen Brains &hearts; Do it quick
+          Simple Math <span className="w3-text-red">&hearts;</span> Strengthen Brains <span className="w3-text-red">&hearts;</span> Do it quick
         </p>
       </header>
 

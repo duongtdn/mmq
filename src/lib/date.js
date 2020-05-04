@@ -13,12 +13,19 @@ export function formatDate(date, option) {
 }
 
 export function formatTime(time, option) {
-  const hh = Math.floor(time/3600)
-  const mm = Math.floor((time%3600)/60)
-  const ss = time - hh*3600 - mm*60
-  if (option && option.short) {
-    return `${("00"+mm).slice(-2)}:${("00"+ss).slice(-2)}`;
+  const hh = Math.floor(time/3600);
+  const mm = Math.floor((time%3600)/60);
+  const ss = time - hh*3600 - mm*60;
+  const sep = {
+    h: option && option.long? ' hours ' : ':',
+    m: option && option.long? ' min ' : ':',
+    s: option && option.long? ' sec ' : '',
+  }
+  if (hh) {
+    return `${("00"+hh).slice(-2)}${sep.h}${("00"+mm).slice(-2)}${sep.m}${("00"+ss).slice(-2)}${sep.s}`;
+  } else if (mm) {
+    return `${("00"+mm).slice(-2)}${sep.m}${("00"+ss).slice(-2)}${sep.s}`;
   } else {
-    return `${("00"+hh).slice(-2)}:${("00"+mm).slice(-2)}:${("00"+ss).slice(-2)}`;
+    return `${("00"+ss).slice(-2)}${sep.s}`;
   }
 }
