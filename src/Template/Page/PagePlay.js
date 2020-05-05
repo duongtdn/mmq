@@ -142,7 +142,7 @@ function AnswerBox(props) {
   }
   function __randStr(correct) {
     const right = ['weldone!', 'good!', 'super!', 'you made it!', 'awesome!', 'excellent!', 'wow', 'yeah!', 'okey, go'];
-    const wrong = ['oh no!', 'try again', 'not that number', 'not easy huh?', 'did you make a typo?', 'you can make it', 'come on', 'are you kidding?'];
+    const wrong = ['oh no!', 'try again', 'not that number', 'not easy huh?', 'did you make a typo?', 'come on, you can make it', 'come on', 'are you kidding?'];
     if (correct) {
       const n = Math.floor(Math.random()*right.length);
       return right[n];
