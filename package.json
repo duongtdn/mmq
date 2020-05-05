@@ -1,5 +1,5 @@
 {
-  "name": "mathmadquick",
+  "name": "mmq",
   "version": "1.0.0",
   "description": "Math Mad Quick HTML5 core game",
   "main": "dist/index.js",
@@ -11,14 +11,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/duongtdn/mathmadquick.git"
+    "url": "git+https://github.com/duongtdn/mmq.git"
   },
   "author": "duongtdn",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/duongtdn/mathmadquick/issues"
+    "url": "https://github.com/duongtdn/mmq/issues"
   },
-  "homepage": "https://github.com/duongtdn/mathmadquick#readme",
+  "homepage": "https://github.com/duongtdn/mmq#readme",
   "dependencies": {
     "@realmjs/react-navi": "^2.7.0",
     "react": "^16.13.1",

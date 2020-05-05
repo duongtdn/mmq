@@ -1,1 +1,1 @@
-# MathMadQuick
+# MMQ
